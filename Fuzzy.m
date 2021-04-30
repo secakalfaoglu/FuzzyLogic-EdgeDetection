@@ -1,21 +1,27 @@
-function [  ] = Fuzzy( I )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
-Igray=imread(I);
+% Program bu dosyadan çalıştırılır.
+function [  ] = Fuzzy()
+% Kenar belirlemek istediğiniz fotoğrafın yolunu aşağıya yazın.
+% Orjinal görüntü penceresi
+Igray=imread("C:\Users\Faruk\Desktop\Kenar Belirleme\wraith.jpg");
 subplot(2,2,1);
 imshow(Igray);
 title('Original Image');
-if size(Igray,3)==3   
-%Igray=Irgb;
-Igray= 0.2989*Igray(:,:,1)+0.5870*Igray(:,:,2)+0.1140*Igray(:,:,3);
+
+% Grayscale görüntü penceresi
+if size(Igray,3)==3
+Igray=rgb2gray(Igray);
 subplot(2,2,2);
 imshow(Igray);
 title('Grayscale Image')
 end
+
+% Fuzzified görüntü penceresi
 Igray2=FIS1(Igray);
 subplot(2,2,3);
 imshow(Igray2);
 title('Fuzzified Image');
+
+% Output görüntü penceresi
 output=FIS2(Igray2);
 subplot(2,2,4);
 imshow(output);
